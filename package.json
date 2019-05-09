@@ -1,0 +1,62 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "compile_lang": "node src/lang/compile.js"
+  },
+  "dependencies": {
+    "@vuikit/theme": "^0.8.1",
+    "aos": "^3.0.0-beta.6",
+    "axios": "^0.18.0",
+    "chart.js": "^2.8.0",
+    "moment-timezone": "^0.5.25",
+    "v-animate-css": "0.0.3",
+    "vue": "^2.6.10",
+    "vue-chartjs": "^3.4.2",
+    "vue-moment": "^4.0.0",
+    "vue-router": "^3.0.1",
+    "vuetify": "^1.5.11",
+    "vuex": "^3.1.0",
+    "vuikit": "^0.8.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-service": "^3.6.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.21",
+    "webpack-bundle-tracker": "^0.4.2-beta"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
