@@ -45,6 +45,13 @@
                         break;
                     case 'faq':
                         this.title = 'Frequently asked questions'
+                        break;
+                    case 'privacy':
+                        this.title = 'Privacy policy'
+                        break;
+                    default:
+                        this.checkHeaderTitle()
+                        break;
                 }
             }
         },
@@ -64,6 +71,12 @@
                         break;
                     case 'webshops':
                         this.title = 'Webshops'
+                        break;
+                    case 'faq':
+                        this.title = 'Frequently asked questions'
+                        break;
+                    case 'privacy':
+                        this.title = 'Privacy policy'
                         break;
                     default:
                         this.checkHeaderTitle()
@@ -108,7 +121,7 @@
         text-align: left;
         font-weight: 400;
         font-size: 55px;
-        margin-bottom: 55px;
+        margin-bottom: 10px;
     }
 
     @media (max-width: 1200px) {
