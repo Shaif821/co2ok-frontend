@@ -2,8 +2,8 @@
     <div class="dashboard">
         <div class="dashboard__container">
             <div class="dashboard__header">
-                <p class="dashboard__title">Dashboard</p>
-                <p class="dashboard__welcome">Weclome, {{this.$store.state.userData.userdata.username}}!</p>
+                <h1 class="dashboard__title">Dashboard</h1>
+                <h5 class="dashboard__welcome">Weclome, {{this.$store.state.userData.userdata.username}}!</h5>
             </div>
 
             <div class="dashboard__tabs hidden-xs-only">
@@ -163,6 +163,7 @@
 
 <style scoped>
     .dashboard {
+        border: 1px solid transparent;
         background: #F4F4F4;
         margin: 0 auto;
         width: 100%;
@@ -173,7 +174,7 @@
     .dashboard__container {
         width: 100%;
         max-width: 1146px;
-        margin: 38px auto 0;
+        margin: 38px auto 100px;
         display: flex;
         flex-direction: column;
     }

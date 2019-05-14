@@ -3,12 +3,14 @@ import Vuex from 'vuex'
 import {
     stat
 } from 'fs';
-import axios from 'axios'
+// import axios from 'axios'
 
 Vue.use(Vuex)
+import axios from 'axios'
 
 export default new Vuex.Store({
     state: {
+        SITE_HOST: 'http://127.0.0.1:8000',
         count: 0,
         modalMessage: '',
         modalStatus: false,
@@ -50,7 +52,7 @@ export default new Vuex.Store({
 
         getUserData(state) {
             axios
-                .get(`http://127.0.0.1:8000/user/authenticateUser/?id=${window.localStorage.getItem('userId')}`, {
+                .get(`${state.SITE_HOST}/user/authenticateUser/?id=${window.localStorage.getItem('userId')}`, {
                     headers: {
                         "X-CSRFToken": `${state.userToken}`,
                         Authorization: `token ${window.localStorage.getItem('userToken')}`
@@ -68,7 +70,7 @@ export default new Vuex.Store({
                         state.userData = '';
                         state.userData = response.data;
                     }
-                    console.log(response.data);
+
                 })
                 .catch(error => {
                     console.log(error);
@@ -97,14 +99,43 @@ export default new Vuex.Store({
             state.userStatus = false
         },
 
+        //haal de merchant huidige maand en jaar transacties data uit de dynamoDB
+        merchantTransactionsGraphData(state) {
+
+            // let currentMonth = this.$moment().format('M')
+            let currentYear = this.$moment().year()
+            let merchantId = this.$route.params.merchantId
+
+            axios.get(`${state.SITE_HOST}/transactionsData/
+            ?year=${currentYear}+
+            id=${merchantId}`, {
+                headers: {
+                    "X-CSRFToken": `${state.userToken}`,
+                    Authorization: `token ${window.localStorage.getItem('userToken')}`
+                }
+            }).then(response => {
+                console.log(response);
+
+            }).catch(error => {
+                console.log(error);
+
+            })
+
+        },
+
         monthGraphData(state) {
-          state.x_asLabel = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC']
-          state.graphData = [0, 100, 50, 200, 150, 250, 55, 23, 71, 220, 171, 58]
+            state.x_asLabel = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC']
+            state.graphData = [Math.round(193.3), Math.round(19.99 + 34.03 + 21.67 + 31.32 + 30.34), Math.round(36.57 + 39.8 + 38.18), Math.round(32.32 + 33.23 + 9.29), Math.round(10.29 + 32.37)]
         },
 
         weekGraphData(state) {
-          state.x_asLabel = ['MON', 'TUE', 'WED', 'THU', 'FRY', 'SAT', 'SUN']
-          state.graphData = [2, 40, 71, 35, 100, 21, 333]
+            state.x_asLabel = ['MON', 'TUE', 'WED', 'THU', 'FRY', 'SAT', 'SUN']
+            state.graphData = [2, 40, 71, 35, 100, 21, 333]
+        },
+
+        roundGraphData(state, data){
+            let roundedData = Math.round(data)
+            return roundedData
         }
 
     },

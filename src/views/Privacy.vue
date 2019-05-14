@@ -1,25 +1,25 @@
 <template>
     <section id="projects">
-        <div class="uk-container" style="max-width: 1090px; width: 100%;">
+        <div class="uk-container" style="max-width: 1090px; width: 100%; margin-bottom: 100px;">
 
             <div uk-grid style="text-align: left;">
-                <div class="uk-width-1-4@m">
+                <div  class="uk-width-1-4@m">
                     <div id="privacyMenu" class="privacy-policy-menu">
                         <ul>
-                            <li><a class="active" href="#A">Privacy Policy</a></li>
-                            <li><a href="#B">Information Collection and Use</a></li>
-                            <li><a href="#C">Personal Data</a></li>
-                            <li><a href="#D">Usage Data</a></li>
-                            <li><a href="#E">Tracking &amp; Cookies Data</a></li>
-                            <li><a href="#F">Use of Data</a></li>
-                            <li><a href="#G">Transfer of Data</a></li>
-                            <li><a href="#H">Disclousure of Data</a></li>
-                            <li><a href="#I">Security of Data</a></li>
-                            <li><a href="#J">Service Provider</a></li>
-                            <li><a href="#K">Links of Other Sites</a></li>
-                            <li><a href="#L">Children's Privacy</a></li>
-                            <li><a href="#M">Change of this Policy</a></li>
-                            <li><a href="#N">Contact Us</a></li>
+                            <li><a @click="activeTitle(1)" :class="[activeClass === 1 ? 'active' : '']" href="#A">Privacy Policy</a></li>
+                            <li><a @click="activeTitle(2)" :class="[activeClass === 2 ? 'active' : '']" href="#B">Information Collection and Use</a></li>
+                            <li><a @click="activeTitle(3)" :class="[activeClass === 3 ? 'active' : '']" href="#C">Personal Data</a></li>
+                            <li><a @click="activeTitle(4)" :class="[activeClass === 4 ? 'active' : '']" href="#D">Usage Data</a></li>
+                            <li><a @click="activeTitle(5)" :class="[activeClass === 5 ? 'active' : '']" href="#E">Tracking &amp; Cookies Data</a></li>
+                            <li><a @click="activeTitle(6)" :class="[activeClass === 6 ? 'active' : '']" href="#F">Use of Data</a></li>
+                            <li><a @click="activeTitle(7)" :class="[activeClass === 7 ? 'active' : '']" href="#G">Transfer of Data</a></li>
+                            <li><a @click="activeTitle(8)" :class="[activeClass === 8 ? 'active' : '']" href="#H">Disclousure of Data</a></li>
+                            <li><a @click="activeTitle(9)" :class="[activeClass === 9 ? 'active' : '']" href="#I">Security of Data</a></li>
+                            <li><a @click="activeTitle(10)" :class="[activeClass === 10 ? 'active' : '']" href="#J">Service Provider</a></li>
+                            <li><a @click="activeTitle(11)" :class="[activeClass === 11 ? 'active' : '']" href="#K">Links of Other Sites</a></li>
+                            <li><a @click="activeTitle(12)" :class="[activeClass === 12 ? 'active' : '']" href="#L">Children's Privacy</a></li>
+                            <li><a @click="activeTitle(13)" :class="[activeClass === 13 ? 'active' : '']" href="#M">Change of this Policy</a></li>
+                            <li><a @click="activeTitle(14)" :class="[activeClass === 14 ? 'active' : '']" href="#N">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -201,306 +201,32 @@
 </template>
 
 <script>
-    import Vue from 'vue'
-    import Vuikit from 'vuikit'
-    import '@vuikit/theme'
+    // import Vue from 'vue'
+    // import Vuikit from 'vuikit'
+    // import '@vuikit/theme'
 
-    Vue.use(Vuikit)
+    // Vue.use(Vuikit)
     export default {
-        name: "Privacy"
+        name: "Privacy",
+
+        data() {
+            return {
+                activeClass: 1,
+            }
+        },
+
+        methods: {
+            activeTitle(number){
+                this.activeClass = number
+            }
+        }
     }
 </script>
 
+<style scoped>
+    @import "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css";
+</style>
+
 <style lang="scss" scoped>
-    // IMPORT IN: ../scss/main.scss
-
-    // VARIABLES FONTS
-    $heading: "Poppins", sans-serif;
-    $body: "Open Sans", sans-serif;
-
-    // VARIABLES COLORS
-    $white: #fff;
-    $black: #222;
-    $darkgrey: #555;
-    $grey: #888;
-    $offgrey: #BCBCBC;
-    $lightgrey: #ccc;
-
-    $green: #10DC87;
-    $darkgreen: #08BA4D;
-    $bluegrey: #606468;
-    $darkblue: #152439;
-
-    // MIXINS
-    @mixin transition {
-        -webkit-transition: all .3s ease;
-        -moz-transition: all .3s ease;
-        -ms-transition: all .3s ease;
-        -o-transition: all .3s ease;
-        transition: all .3s ease;
-    }
-    @mixin heading {
-        font-family: $heading;
-        font-size: 28px;
-        font-weight: 500;
-    }
-    @mixin subheading {
-        font-family: $heading;
-        font-weight: 700;
-    }
-    @mixin body {
-        font-family: $body;
-        font-size: 14px;
-        font-weight: 400;
-    }
-
-    h1.page-heading {
-        position: absolute;
-        top: 200px;
-        left: 100px;
-        @include heading;
-        color: $white;
-        margin: 0 0 40px 0;
-    }
-
-    div.privacy-policy-menu {
-        margin: 0;
-        padding: 0;
-        border-left: 2px solid $lightgrey;
-        position: sticky;
-        top: 60px;
-        left: 0;
-        z-index: 0;
-
-        ul {
-            margin: 0;
-            padding: 30px 0 0 0;
-            list-style-type: none;
-
-            li {
-                @include transition;
-                padding: 0 0 4px 0;
-                margin: 0;
-
-                a {
-                    padding: 8px 20px;
-                    @include transition;
-                    @include body;
-                    position: relative;
-                    color: $grey;
-                    text-decoration: none;
-
-                    &:before {
-                        content: "";
-                        position: absolute;
-                        width: 0;
-                        height: 25px;
-                        left: 0;
-                        background-color: $darkgreen;
-                        visibility: hidden;
-                        @include transition;
-                    }
-                    &:hover {
-                        color: $darkgreen;
-                        text-decoration: none;
-                    }
-                    &:hover:before {
-                        visibility: visible;
-                        width: 5px;
-                    }
-                }
-                .active {
-                    color: $darkgreen;
-                    text-decoration: underline;
-                }
-            }
-        }
-    }
-    div.privacy-policy-content {
-        margin: 0;
-        padding: 0;
-
-        p.intro {
-            padding-top: 30px;
-            @include body;
-            color: $darkgrey;
-            font-weight: 600;
-        }
-        h3 {
-            @include heading;
-            color: $bluegrey;
-        }
-        h5 {
-            margin: 20px 0;
-            @include heading;
-            font-size: 20px;
-            color: $offgrey;
-        }
-        h6 {
-            margin: 20px 0 10px 0;
-            @include body;
-            font-size: 18px;
-            color: $grey;
-            font-weight: 700;
-        }
-        p {
-            @include body;
-            color: $darkgrey;
-        }
-        ul {
-            list-style-type: disc;
-
-            li {
-                @include body;
-                color: $darkgrey;
-            }
-        }
-        a.google-link {
-            @include transition;
-            @include subheading;
-            font-weight: 400;
-            color: $green;
-
-            &:hover {
-                color: $darkgreen;
-                text-decoration: none;
-            }
-            i {
-                margin: 2px 0 0 8px;
-            }
-        }
-        a.contact-link {
-            padding: 8px 20px;
-            @include transition;
-            @include subheading;
-            background-image: linear-gradient($green, $darkgreen);
-            color: $white;
-            font-size: 18px;
-            font-weight: 400;
-            border-radius: 4px;
-            min-height: 0;
-
-            &:hover {
-                color: $black;
-                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-                text-decoration: none;
-            }
-        }
-    }
-
-
-
-    // IMPORT IN: ../scss/main.scss
-
-    // VARIABLES FONTS
-    $heading: "Poppins", sans-serif;
-    $body: "Open Sans", sans-serif;
-
-    // VARIABLES COLORS
-    $white: #fff;
-    $black: #222;
-    $darkgrey: #555;
-    $grey: #888;
-    $offgrey: #BCBCBC;
-    $lightgrey: #ccc;
-
-    $green: #10DC87;
-    $darkgreen: #08BA4D;
-    $bluegrey: #606468;
-    $darkblue: #152439;
-
-    // MIXINS
-    @mixin transition {
-        -webkit-transition: all .3s ease;
-        -moz-transition: all .3s ease;
-        -ms-transition: all .3s ease;
-        -o-transition: all .3s ease;
-        transition: all .3s ease;
-    }
-    @mixin heading {
-        font-family: $heading;
-        font-size: 28px;
-        font-weight: 500;
-    }
-    @mixin subheading {
-        font-family: $heading;
-        font-weight: 700;
-    }
-    @mixin body {
-        font-family: $body;
-        font-size: 14px;
-        font-weight: 400;
-    }
-
-    .nav-mobile {
-        visibility: hidden;
-    }
-
-    @media screen and (max-width: 50em) {
-        .uk-nav-item .uk-logo {
-            float: left;
-        }
-        .uk-navbar-nav {
-            display: none;
-        }
-        .nav-mobile {
-            visibility: visible;
-            padding: 0;
-            margin: 0;
-        }
-        section#A {
-
-            h1.page-heading {
-                top: 200px;
-                left: 35px;
-            }
-            img {
-                height: 200px;
-            }
-        }
-    }
-
-
-    // IMPORTS
-
-    // VARIABLES FONTS
-    $heading: "Poppins", sans-serif;
-    $body: "Open Sans", sans-serif;
-
-    // VARIABLES COLORS
-    $white: #fff;
-    $black: #222;
-    $darkgrey: #555;
-    $grey: #888;
-    $lightgrey: #ccc;
-
-    $green: #10DC87;
-    $darkgreen: #08BA4D;
-    $bluegrey: #606468;
-    $darkblue: #152439;
-
-    // MIXINS
-    @mixin transition {
-        -webkit-transition: all .3s ease;
-        -moz-transition: all .3s ease;
-        -ms-transition: all .3s ease;
-        -o-transition: all .3s ease;
-        transition: all .3s ease;
-    }
-    @mixin heading {
-        font-family: $heading;
-        font-size: 28px;
-        font-weight: 500;
-    }
-    @mixin subheading {
-        font-family: $heading;
-        font-weight: 700;
-    }
-    @mixin body {
-        font-family: $body;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 17pt;
-    }
-
+    @import '../styles/privacy.scss';
 </style>

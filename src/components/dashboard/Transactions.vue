@@ -7,7 +7,7 @@
 
         <div class="graph-container mb-1">
             <div class="graph-tabs">
-                <p class="graph-tab-name font-weight-bold"  @click="monthTransactions()">Monthly Transactions</p>
+                <p class="graph-tab-name font-weight-bold" style="position: relative; top: 10px;"  @click="monthTransactions()">Monthly Transactions</p>
                 <p class="graph-tab-name font-weight-bold"  @click="weekTransactions()">Weekly Transactions</p>
             </div>
 
@@ -26,8 +26,8 @@
                         <template v-slot:activator="{ on }">
                           <!-- <img src="../../assets/images/dashboard/prev-month.svg" alt="" v-on="on" class="prev-month"> -->
                           <div class="month-ctrl" @click="prevMonthCtrl()">
-                              <v-icon medium style="color: #369555; cursor: pointer;" class="animated zoomIn" v-on="on">keyboard_arrow_left</v-icon>
-                              <v-icon medium style="color: #369555; cursor: pointer;" class="animated zoomIn" v-on="on">keyboard_arrow_left</v-icon>
+                              <v-icon medium :style="prevStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_left</v-icon>
+                              <v-icon medium :style="prevStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_left</v-icon>
                           </div>
                         </template>
                         <span>{{prevMonth}}</span>
@@ -45,8 +45,8 @@
                         <template v-slot:activator="{ on }">
                           <!-- <img src="../../assets/images/dashboard/next-month.svg" alt="" v-on="on" class="prev-month"> -->
                           <div class="month-ctrl" @click="nextMonthCtrl()">
-                              <v-icon medium style="color: #E0E0E0; cursor: pointer;" class="animated zoomIn" v-on="on">keyboard_arrow_right</v-icon>
-                              <v-icon medium style="color: #E0E0E0; cursor: pointer;" class="animated zoomIn" v-on="on">keyboard_arrow_right</v-icon>
+                              <v-icon medium :style="nextStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_right</v-icon>
+                              <v-icon medium :style="nextStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_right</v-icon>
                           </div>
                         </template>
                         <span>{{nextMonth}}</span>
@@ -138,7 +138,10 @@ import LineChart from '@/components/dashboard/chart.vue'
               graphLegend: null,//graph info label
               currentMonthNumber: this.$moment().subtract(1, 'months').format('M'),
               monthNumber: 0,
-              realTimeMonth: this.$moment().format('MMMM')//current month when next/pren are clicked
+              realTimeMonth: this.$moment().format('MMMM'), //displayed month when next/pren are clicked
+              monthsArr: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Dencember'],
+              nextStyle: {color: '#E0E0E0', cursor: 'default'}, // month next btn dunamic styles
+              prevStyle: {color: '#369555', cursor: 'pointer'} // month previous btn dunamic styles
 
             }
         },
@@ -163,7 +166,7 @@ import LineChart from '@/components/dashboard/chart.vue'
                         {
                         label: `${this.currentMonth} Transaction(s)`,
                         borderColor: '#94EDCE',
-                        data: [0, 100, 50, 200, 150, 250, 55, 23, 71, 220, 171, 58]
+                        data: [Math.round(193.3),Math.round(19.99+34.03+21.67+31.32+30.34),Math.round(36.57+39.8+38.18),Math.round(32.32+33.23+9.29),Math.round(10.29+32.37)]
                         // data: this.$store.state.graphData
                         }
                     ]
@@ -197,7 +200,6 @@ import LineChart from '@/components/dashboard/chart.vue'
             },
 
             weekTransactions() {
-              console.log(this.$moment().subtract(1, 'months').format('MMMM'));
 
               this.week = true
               this.graphLegend = `${this.currentMonth} week-1 Transaction(s)`
@@ -212,38 +214,55 @@ import LineChart from '@/components/dashboard/chart.vue'
             nextMonthCtrl()
             {
 
-               console.log(this.monthNumber);
-               if(this.monthNumber > 0 && this.realTimeMonth != this.currentMonth){
+            //    if(this.monthNumber > 0 && this.realTimeMonth != this.currentMonth){
+               if(this.realTimeMonth != this.currentMonth){
    
                   let nextmonth = this.$moment(this.realTimeMonth,'MMMM').add(2, 'months').format('MMMM')
+                  this.realTimeMonth = this.$moment(this.realTimeMonth,'MMMM').add(1, 'months').format('MMMM')
+
                   this.nextMonth = nextmonth
+                  this.prevMonth = this.$moment(this.realTimeMonth,'MMMM').subtract(1, 'months').format('MMMM')
+                  this.graphLegend = `${this.realTimeMonth} week-1 Transaction(s)`
 
-                  let nextmonthLabel = this.$moment(this.realTimeMonth,'MMMM').add(1, 'months').format('MMMM')
+                  this.nextStyle.color = '#369555'
+                  this.nextStyle.cursor = 'pointer'
+                  this.prevStyle.color = '#369555'
+                  this.prevStyle.cursor = 'pointer'
 
-                  this.realTimeMonth = nextmonthLabel //update nextmonthLabel data
-                  this.graphLegend = `${nextmonthLabel} week-1 Transaction(s)`
-
+               }else if(this.currentMonth == this.realTimeMonth){
+                   
+                   this.nextMonth = 'May'
+                   this.nextStyle.color = '#E0E0E0'
+                   this.nextStyle.cursor = 'default'
                }
                
 
             },
 
             prevMonthCtrl() {
+              
+              //month displayed when previous month btn clicked
+              let prevCurrentMonth = this.$moment(this.realTimeMonth,'MMMM').subtract(1, 'months').format('MMMM');
+                
+              if(this.monthsArr.indexOf(this.realTimeMonth) >= 2){
 
-              //if de monthNumber < the current month digit number
-              if(this.monthNumber < this.currentMonthNumber-1){
-                  this.monthNumber++
                   let prevmonth = this.$moment(this.realTimeMonth,'MMMM').subtract(2, 'months').format('MMMM')
-                  let prevmonthLabel = this.$moment(this.realTimeMonth,'MMMM').subtract(1, 'months').format('MMMM')
+                  this.realTimeMonth = this.$moment(this.realTimeMonth,'MMMM').subtract(1, 'months').format('MMMM')//update realTimeMonth data
+
+                  this.nextStyle.color = '#369555'
+                  this.nextStyle.cursor = 'pointer'
            
                   this.prevMonth = prevmonth //update previous tooltip content
-                  this.realTimeMonth = prevmonthLabel //update realTimeMonth data
-                  this.graphLegend = `${prevmonthLabel} week-1 Transaction(s)`
+                  this.nextMonth = this.$moment(this.realTimeMonth,'MMMM').add(1, 'months').format('MMMM')//update next tooltip content
+                  this.graphLegend = `${this.realTimeMonth} week-1 Transaction(s)`
 
-              }else{
-                //   this.prevMonth = 'January'
-                //   this.nextMonth = 'Frebruary'
-                //   this.graphLegend = `January week-1 Transaction(s)`                
+              }else if(this.monthsArr.indexOf(this.realTimeMonth) == 1){
+                  this.prevStyle.color = '#E0E0E0'
+                  this.prevStyle.cursor = 'default'
+                  this.prevMonth = 'January'
+                   this.realTimeMonth = 'January'
+                   this.graphLegend = `${this.realTimeMonth} week-1 Transaction(s)`
+                   this.nextMonth = 'February'             
               }
               
 
@@ -315,7 +334,7 @@ import LineChart from '@/components/dashboard/chart.vue'
 
     .graph-tab-name{
         text-align: left;
-        text-decoration: underline;
+        /* text-decoration: underline; */
         font-size: 16px;
         width: 250px;
         cursor: pointer;
@@ -324,6 +343,7 @@ import LineChart from '@/components/dashboard/chart.vue'
 
     .graph-tab-name:hover{
         color: black;
+        text-decoration: underline;
     }
 
     .graphs{

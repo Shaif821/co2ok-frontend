@@ -1,12 +1,12 @@
 <template>
     <v-app id="app">
-        <Nav :routeName="currentRouteName"/>
-        <!--<div class="body">-->
+        <div class="body">
+            <Nav :routeName="currentRouteName"/>
             <!--<transition-group enter-active-class="animated fadeIn" mode="out-in">-->
-                <Header :key="showHeader" :routeName="currentRouteName" v-if="showHeader"/>
-                <router-view :key="currentRouteName" :routeName="currentRouteName"></router-view>
+            <Header :key="showHeader" :routeName="currentRouteName" v-if="showHeader"/>
+            <router-view class="view" :key="currentRouteName" :routeName="currentRouteName"></router-view>
             <!--</transition-group>-->
-        <!--</div>-->
+        </div>
         <Footer/>
         <Modal v-if="$store.state.modalStatus"/>
     </v-app>
@@ -33,7 +33,7 @@
         methods: {
             checkHeader() {
                 if (this.currentRouteName === 'dashboard' || this.currentRouteName === 'register' ||
-                    this.currentRouteName === 'login' || this.currentRouteName === 'home') {
+                    this.currentRouteName === 'login' || this.currentRouteName === 'home' || this.currentRouteName === '404') {
                     this.showHeader = false
                 } else {
                     this.showHeader = true
@@ -74,92 +74,21 @@
         width: 100vw;
         min-height: 100vh;
         display: flex;
+        overflow: hidden;
+    }
+
+    .body {
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    .view {
+        height: 100%;
     }
 
     input:focus {
         border: 1px solid #08BA4D !important;
         box-shadow: 0 0 1px #08BA4D;
         outline: none;
-    }
-
-    $main-color: #08BA4D;
-    $secondary-color: #10DC87;
-    $main-gradient: linear-gradient(to bottom, #10dc87 0%, #08ba4d 100%);
-    $text-color: #2F2F2F;
-
-    /* ------- Main things ------- */
-
-    h1, h2, h3, p, a, label, input, ::placeholder {
-        font-family: 'Poppins', sans-serif !important;
-        margin: 0;
-        padding: 0;
-    }
-
-    h1 {
-        color: #606468;
-        font-weight: 600;
-        margin: 0;
-        font-size: 40px;
-        line-height: 48px;
-        margin-bottom: 20px;
-    }
-
-    .subheading {
-        color: $main-color;
-        font-size: 18px;
-    }
-
-    p, a, input, ::placeholder {
-        font-size: 16px !important;
-    }
-
-    p, label, input {
-        color: $text-color;
-    }
-
-    p {
-        margin: 0;
-        padding: 0;
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    input {
-        display: block;
-        margin-top: 4px;
-        margin-bottom: 15px;
-        border-radius: 3px;
-        border: 1px solid #BCBCBC;
-        padding: 13px;
-        width: 100%;
-        box-sizing: border-box;
-
-        &:focus {
-            outline: none;
-            border: 1px solid $main-color;
-        }
-    }
-
-    ::placeholder {
-        color: #959595;
-    }
-
-    a {
-        &:hover {
-            text-decoration: none !important;
-        }
-    }
-
-    .link {
-        color: $main-color;
-        padding: 0 !important;
-        margin: 0 !important;
-
-        &:hover {
-            color: $main-color;
-            text-decoration: underline;
-        }
     }
 </style>

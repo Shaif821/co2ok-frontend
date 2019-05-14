@@ -23,7 +23,7 @@ const router = new Router({
             component: () => import('./views/Home'),
         },
         {
-            path: '/register',
+            path: '/register/:merchantId',
             name: 'register',
             component: () => import( './views/Register.vue')
         },
@@ -57,14 +57,16 @@ const router = new Router({
             path: '/privacy',
             name: 'privacy',
             component: () => import('./views/Privacy'),
+
+        },
+        { //404 page, redirects back to home (= /)
+            path: '*', redirect: '/'
+
         }
     ],
 
-    scrollBehavior(to) {
-        if (to.hash) {
-            return window.scrollTo({ top: document.querySelector(to.hash).offsetTop, behavior: 'smooth' });
-        }
-        return window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 };
     }
 });
 

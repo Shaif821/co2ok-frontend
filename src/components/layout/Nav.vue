@@ -48,14 +48,13 @@
             <v-toolbar-items class="hidden-sm-and-down navbar__desktop">
                 <v-btn v-for="item in menu" :key="item.link"
                        :ripple="false" flat>
-                    <span class="text-capitalize navbar__items" style="height: 75px;" @click="$router.push(item.link)"
+                    <span class="text-capitalize navbar__items" style="height: 75px;" @mouseover="checkActive(item.title)" @click="$router.push(item.link)"
                           :class="[checkActive(item.title) ? 'navbar__active' : '']">
                         {{item.title}}
                     </span>
                 </v-btn>
 
                 <v-spacer></v-spacer>
-
 
                 <transition enter-active-class="animated bounceIn"
                             leave-active-class="animated bounceOut"
@@ -176,7 +175,9 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    @import '../../styles/main.scss';
+
     .navbar__container {
         font-family: 'Poppins', sans-serif;
         font-weight: 800;
@@ -189,7 +190,6 @@
         background: white;
         overflow: hidden;
         box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.25);
-
     }
 
     .navbar__wrapper {

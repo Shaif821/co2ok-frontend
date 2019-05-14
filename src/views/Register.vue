@@ -2,7 +2,7 @@
     <v-container class="register__container ma-0 pa-0" fluid align-center grid-list-md text-xs-center>
         <v-layout class="register__layout  ma-0 pa-0" wrap row>
             <v-flex class="register__col-1" xs12 sm12 md6>
-                <v-layout  class="register__col-filler hidden-sm-and-down" wrap>
+                <v-layout class="register__col-filler hidden-sm-and-down" wrap>
 
                 </v-layout>
 
@@ -20,40 +20,41 @@
             </v-flex>
 
             <v-flex xs12 sm12 md6 lg4>
-                <v-layout  justify-center align-center column wrap class="hidden-sm-and-down pa-5">
+                <v-layout justify-center align-center column wrap class="hidden-sm-and-down pa-5">
                 </v-layout>
 
-                <v-layout class="register__layout-form pa-5" justify-center align-center column wrap >
+                <v-layout class="register__layout-form pa-5" justify-center align-center column wrap>
                     <v-flex class="register__form-mb" justify-center align-center column wrap xs12 lg4>
                         <form v-model="valid" class="login__form">
                             <div class="login__header-group animated fadeInUp">
                                 <p class="login__form-header">Account</p>
-                                <p class="login__form-title">Make an account to get access to more info!</p>
+                                <h1 class="login__form-title">Make an account to get access to more info!</h1>
                             </div>
 
                             <transition enter-active-class="animated fadeIn"
                                         leave-active-class="animated fadeOut"
                                         mode="out-in">
 
-                                <div v-if="!next" key="firstSlide" class="login__group animated fadeInUp" style="animation-delay: 0.3s;">
+                                <div v-if="!next" key="firstSlide" class="login__group animated fadeInUp"
+                                     style="animation-delay: 0.3s;">
 
                                     <label class="login__group">
                                         <div>Company name<span class="asterik">*</span></div>
                                         <input class="login__group-input" v-model="company"
-                                               type="email" placeholder="Fill in you email...">
+                                               type="email" placeholder="Fill in your company name...">
                                     </label>
 
                                     <label class="login__group">
                                         <div>E-mail<span class="asterik">*</span></div>
                                         <input class="login__group-input" v-model="email"
-                                               type="email" placeholder="Fill in you email...">
+                                               type="email" placeholder="Fill in your email...">
                                     </label>
 
                                     <div class="login__group-password">
                                         <label class="login__group">
                                             <div>Password<span class="asterik">*</span></div>
                                             <input class="login__group-input" v-model="password"
-                                                   type="password" placeholder="Fill in you password...">
+                                                   type="password" placeholder="Fill in your password...">
                                         </label>
                                     </div>
 
@@ -120,16 +121,18 @@
                                 </div>
                             </transition>
 
-                            <div class="register__button-group animated bounceInUp slower" style="animation-delay: 0.6s;">
-                                <button v-if="next" @click="next = false"  class="login__back">
-                                    <span>< Back</span>
+                            <div class="register__button-group animated bounceInUp slower"
+                                 style="animation-delay: 0.6s;">
+                                <button v-if="next" @click="next = false" class="login__back">
+                                    <span> Back</span>
                                 </button>
 
                                 <button v-if="!next" @click.prevent="next = true" class="login__submit">
                                     <span>Next</span>
                                 </button>
 
-                                <button v-else type="submit" @keyup.enter="sendForm()" @click.prevent="sendForm()"
+                                <button v-else type="submit" @keyup.enter="merchant_idChecker()"
+                                        @click.prevent="merchant_idChecker()"
                                         class="login__submit">
                                     <span v-if="send === false">Make an account</span>
                                     <v-progress-circular v-else indeterminate color="white">
@@ -150,7 +153,7 @@
 
 
 <script>
-    import axios from 'axios'
+    // import axios from 'axios'
 
     export default {
         name: 'Register',
@@ -180,6 +183,9 @@
             }
         },
 
+        mounted() {
+          console.log(this.$router.params.merchantId)
+        },
 
         methods: {
             errorMessage() {
@@ -188,7 +194,40 @@
                 this.$store.commit('modalStatus', modal)
             },
 
-            sendForm() {
+            //check of de webshop eigenaar id in de url al gekoppeld is aan een account
+            merchant_idChecker() {
+
+                let mechantId = this.$route.params.merchantId
+                this.$axios
+                    .post(`${this.$store.state.SITE_HOST}/merchantIdChecker/`, {
+                        body: {
+                            merchantId: mechantId
+                        },
+                        headers: {
+                            "X-CSRFToken": `${this.$store.state.userToken}`,
+                            Authorization: `token ${window.localStorage.getItem('userToken')}`
+                        }
+                    }).then(response => {
+                    console.log(response);
+
+                    if (response.data[0].accountIdCheck && response.data[1].dynamoIdCheck > 0) {
+                        console.log('logged');
+
+                        this.register()
+                    } else {
+                        alert('deze id is al gekkopeld aan een account of is niet geldig')
+                    }
+
+                }).catch(error => {
+                    console.log(error);
+
+                })
+
+
+            },
+
+            register() {
+                let self = this
                 this.send = true
                 if (this.consent !== '' && this.email !== '' && this.password !== '' &&
                     this.passwordRepeat !== '' && this.company !== '' &&
@@ -196,8 +235,8 @@
                     && this.country !== '' && this.city !== '' && this.zipcode !== ''
                     && this.street !== '' && this.number !== ''
                 ) {
-                    axios
-                        .post('http://127.0.0.1:8000/signup/', {
+                    this.$axios
+                        .post(`${this.$store.state.SITE_HOST}/signup/`, {
                             body: {
                                 company: this.company,
                                 email: this.email,
@@ -210,13 +249,14 @@
                                 number: this.number,
                                 sort: 'webshop',
                                 name: this.name,
-                                link: this.link,
-                                country: 'this.country',
-                                city: this.city,
-                                zipcode: this.zipcode,
-                                street: this.street
+                                merchantId: this.$route.params.merchantId,
+                                // link: this.link,
+                                // country: 'this.country',
+                                // city: this.city,
+                                // zipcode: this.zipcode,
+                                // street: this.street
                             },
-                            header: {"X-CSRFToken": 'gZvnzSFeGp7h68WjCzmFky6wMkiJZXDU',}
+                            // header: {"X-CSRFToken": 'gZvnzSFeGp7h68WjCzmFky6wMkiJZXDU',}
 
                         })
                         .then(response => {
@@ -225,7 +265,7 @@
                                 if (response.data.authenticate) {
                                     this.$store.dispatch('commitSaveUser', response.data)
                                     this.$store.commit('setLocalUserData', response.data)
-                                    this.$router.push('dashboard')
+                                    self.$router.push('/dashboard')
                                 } else {
                                     this.errorMessage()
                                 }
@@ -426,26 +466,33 @@
             margin-left: 0;
             font-size: 15px;
             overflow: hidden;
-            width: 450px;
+            max-width: 600px;
+            width: 100%;
         }
 
         .register__layout-form {
+            margin-bottom: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .register__form-mb {
-            margin: 0;
+            margin: 0 0 100px;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .login__form-title {
-            font-size: 17px;
+            font-size: 20px;
             line-height: 25px;
         }
 
         .login__back {
-            padding:5px 15px;
+            padding: 5px 15px;
         }
 
         .login__group {
@@ -457,14 +504,15 @@
         }
     }
 
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
         .login__form {
             padding: 40px 40px;
             width: 100%;
+            max-width: 500px;
         }
 
         .login__submit, .login__back {
-            padding: 5px 10px;
+            padding: 5px 20px;
             font-size: 15px;
         }
     }

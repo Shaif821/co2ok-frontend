@@ -5,7 +5,7 @@
 
           <v-flex xs12 sm12 md12 lg6 xlg6 class="header-txt-flex pa-5">
              <p class="white--text animated fadeInUp" style="animation-delay:0.2s;">HI WE'RE CO2ok</p>
-             <h1 class="font-weight-bold mb-5 animated fadeInUp" style="animation-delay:0.4s; width: 450px;">Become a Ninja and<br> shop climate neutral!</h1>
+             <h1 class="font-weight-bold mb-5 animated fadeInUp" style="animation-delay:0.4s; width: 500px;">Become a Ninja and<br> shop climate neutral!</h1>
              <v-btn depressed color="#28123E" class="white--text mb-2 font-weight-bold animated zoomIn" style='animation-delay:0.6s;margin: 0px; padding:0px; font-size: 15px;width: 230px;height: 45px;border-radius: 9px;'>INSTALL THE EXTENSION</v-btn>
              <span class="caption white--text animated fadeInLeft" style="animation-delay:0.7s;">Activate the extension and you’ll be shopping climate neutral without a cost!</span>
           </v-flex>
@@ -20,26 +20,26 @@
       <div class="ninja-work mt-4 mb-5">
           <p style="font-size: 21px; margin: 0px; color: #10DC87;animation-delay:1s;" class="animated fadeInUp">HOW IT WORKS</p>
           <h1 style="width: 95%;margin:0px;animation-delay:1.2s;" class="font-weight-bold animated fadeInUp pb-2" color="#28123E">FOLLOW THESE 3 SIMPLE STEPS</h1>
-          <span style="width: 95%;margin:0px;animation-delay:1.3s;" class=" animated fadeInUp" color="#28123E">There are no extra costs for you. The CO₂ compensation is fully covered by the shop.</span>
+          <span style="width: 95%;margin:0px;animation-delay:1.3s;" class="animated fadeInUp" color="#28123E">There are no extra costs for you. The CO₂ compensation is fully covered by the shop.</span>
       </div>
 
       <v-layout row wrap justify-center align-start class="mt-1">
 
           <!-- md - lg - xlg display -->
           <v-flex xs12 sm12 md4 lg4 xlg3 v-for="(ninjaExtensionStep,i) in ninjaExtensionSteps" :key="i" class="hidden-sm-and-down steps-container mb-5">
-              <!-- <img :src="ninjaExtensionStep.img" alt="" class="mb-4 animated bounceIn" :style="{animationDelay:0.5+i-(i*'0.5')+'s'}" data-aos="zoom-in" :data-aos-delay="i*50"> -->
+              <!-- <img :src="ninjaExtensionStep.img" alt="" class="mb-4 animated bounceIn" :styles="{animationDelay:0.5+i-(i*'0.5')+'s'}" data-aos="zoom-in" :data-aos-delay="i*50"> -->
               <img :src="ninjaExtensionStep.img" alt="" class="mb-4" data-aos="zoom-in" :data-aos-delay="i*50" style="height:237px;">
-              <!-- <p class="font-weight-bold animated zoomIn" :style="{animationDelay: 0.7+i-(i*'0.5')+'s'}" style="font-size:21px; color: #10DC87;margin: 0px;" data-aos="zoom-in-up" :data-aos-delay="i*100">Step{{i+1}}</p> -->
+              <!-- <p class="font-weight-bold animated zoomIn" :styles="{animationDelay: 0.7+i-(i*'0.5')+'s'}" styles="font-size:21px; color: #10DC87;margin: 0px;" data-aos="zoom-in-up" :data-aos-delay="i*100">Step{{i+1}}</p> -->
               <p class="font-weight-bold mb-1" style="font-size:21px; color: #10DC87;margin: 0px;" data-aos="zoom-in-up" :data-aos-delay="i*100">Step{{i+1}}</p>
-              <!-- <p class="animated zoomIn" :style="{animationDelay: 0.9+i-(i*'0.5')+'s'}" style="color: #28123E;font-size:15px;margin: 0px;" data-aos="zoom-in-up" :data-aos-delay="i*100">{{ninjaExtensionStep.title}}</p> -->
+              <!-- <p class="animated zoomIn" :styles="{animationDelay: 0.9+i-(i*'0.5')+'s'}" styles="color: #28123E;font-size:15px;margin: 0px;" data-aos="zoom-in-up" :data-aos-delay="i*100">{{ninjaExtensionStep.title}}</p> -->
               <p class="font-weight-bold" style="color: #28123E;font-size:15px;margin: 0px;" data-aos="zoom-in-up" :data-aos-delay="i*100">{{ninjaExtensionStep.title}}</p>   
-              <!-- <p class="animated zoomIn" :style="{animationDelay:1.1+i-(i*'0.5')+'s'}" style="color: #28123E;font-size:16px;text-align: center;" data-aos="zoom-in-up" :data-aos-delay="i*100">{{ninjaExtensionStep.content}}</p> -->
+              <!-- <p class="animated zoomIn" :styles="{animationDelay:1.1+i-(i*'0.5')+'s'}" styles="color: #28123E;font-size:16px;text-align: center;" data-aos="zoom-in-up" :data-aos-delay="i*100">{{ninjaExtensionStep.content}}</p> -->
               <p class="steps-content pa-2" style="color: #28123E;text-align: center;" data-aos="zoom-in-up" :data-aos-delay="i*100">{{ninjaExtensionStep.content}}</p>
           </v-flex>
 
           <!-- mobile - tablet(xsm - sm) display -->
           <v-flex xs12 sm12 class="hidden-md-and-up steps-container mb-3">
-            <v-carousel interval="10000" hide-controls hide-delimiters height="400px" style="">
+            <v-carousel :light="light" interval="10000" hide-controls height="450px" style="">
               <v-carousel-item v-for="(ninjaExtensionStep,i) in ninjaExtensionSteps" :key="i">
                 <div class="mobile-spets-items-container">
                   <img :src="ninjaExtensionStep.img" alt="" class="mb-4 animated zoomIn" :style="{animationDelay:i*'0.2'+'s'}" style="height: 237px;">
@@ -99,7 +99,7 @@
                   <p class="mt-3 mb-5 animated fadeInUp">{{project.txt}}</p>
                 </div> 
             </v-carousel-item>
-            <!-- <p class="caption mt-4 mb-5"  style="margin: 0px;font-size: 20px; text-align:center; color: #28123E;">Sustainable energy sources like the sun, wind and hydro power don’t have negative effects on the climate.<br>Very little greenhouse gases are emitted and there is no air polution.</p> -->
+            <!-- <p class="caption mt-4 mb-5"  styles="margin: 0px;font-size: 20px; text-align:center; color: #28123E;">Sustainable energy sources like the sun, wind and hydro power don’t have negative effects on the climate.<br>Very little greenhouse gases are emitted and there is no air polution.</p> -->
           </v-carousel>
         </v-flex>
 
@@ -120,8 +120,8 @@
                        :key="i" 
                        :src="partnerIcon.src" 
                        alt="" 
-                       style="border: 1px solid red; width: 168px;height:168px;"
-                       :style="{animationDelay:'0.2'*i+'s'}"
+                       styles="border: 1px solid red; width: 168px;height:168px;"
+                       :styles="{animationDelay:'0.2'*i+'s'}"
                        class="animated zoomIn"
                       > -->
                       <div 
@@ -151,11 +151,12 @@ data() {
   return{
 
     carouselLightTheme: false,
+    light: true,
 
      ninjaExtensionSteps: [
       {img: require('../assets/images/home/ninjaDesign_Register_2.png'), title: 'BECOME A CO₂ok NINJA', content: 'Simply register with us and install the app. The app is safe, open source, and respects your privacy'},
       {img: require('../assets/images/home/ninjaDesign_Trolly.png'), title: 'SHOP', content: 'Start shopping in your Ninja suit. After paying we will receive a commission from the shop.'},
-      {img: require('../assets/images/home/ninjaDesign_Hadouken.png'), title: 'BECOME A CO₂ok NINJA', content: 'With this commission we finance projects that directly reduce greenhouse gas emissions. In effect this makes your purchase climate neutral. Thank you 💚.'}
+      {img: require('../assets/images/home/ninjaDesign_Hadouken.png'), title: 'FIGHT CLIMATE CHANGE', content: 'With this commission we finance projects that directly reduce greenhouse gas emissions. In effect this makes your purchase climate neutral. Thank you 💚.'}
     ],
 
     webshops: [
@@ -243,18 +244,10 @@ methods: {
 
     // for (let i = 0; i < carouselActives.length; i++) {      
     //   let carouselActive = carouselActives[i];
-    //   carouselActive.style.opacity = '1'
-    //   carouselActive.style.color = 'green'
+    //   carouselActive.styles.opacity = '1'
+    //   carouselActive.styles.color = 'green'
     //   console.log(carouselActive);   
     // }
-
-    for (let i = 0; i < carouselItemsIcons.length; i++) {      
-      let carouselItemsIcon = carouselItemsIcons[i];
-      carouselItemsIcon.style.fontSize = '10px'
-      carouselItemsIcon.style.border = '1px solid blue'
-      carouselItemsIcon.style.color = '#10DC87'
-      carouselItemsIcon.style.display = 'none'   
-    }
 
   }
 
@@ -265,6 +258,166 @@ methods: {
 </script>
 
 <style scoped>
+
+    .home-container {
+        width: 80%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        overflow-x: hidden;
+        /* background-color:white; */
+    }
+
+    .header-layout {
+        width: 100%;
+        height: 480px;
+        background-image: url('../assets/images/home/homebackground 1.png');
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: 100% 100%;
+    }
+
+    .header-txt-flex {
+        /* width: 1197px; */
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .header-txt-flex p {
+        text-align: left;
+        font-size: 21px;
+        position: relative;
+        top: 30px;
+    }
+
+    .header-txt-flex h1 {
+        text-align: left;
+        font-size: 43px;
+        /* height: 157px; */
+        height: auto;
+        color: white;
+    }
+
+    .header-txt-flex span {
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .header-img-flex {
+        /* width: 1197px; */
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .world-ball {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-image: url('../assets/images/home/wereldbol.png');
+        background-position: right;
+        background-size: 100%;
+        /* position: relative;
+        right: 50px; */
+    }
+
+    .ninja-work {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ninja-work * {
+        text-align: center;
+    }
+
+    .ninja-work h1 {
+        font-size: 33px;
+    }
+
+    .ninja-work span {
+        font-size: 9px;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .steps-content {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .mobile-spets-items-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+
+    .involed-btn, .shopping-btn {
+        border-radius: 5px;
+        width: 100%;
+        height: 65px;
+        font-size: 26px;
+    }
+
+    .transaction-steps {
+        width: 90%;
+        height: 692px;
+        background-image: url('../assets/images/home/transactionsteps.png');
+        background-position: center;
+        background-size: contain;
+        margin-top: 48px;
+    }
+
+    .webshop-txt-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+
+    .webshop-txt-flex .shops-title {
+        text-align: center;
+        font-size: 33px;
+        color: #28123E;
+        margin: 0px;
+    }
+
+    .slider-flex {
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 270px;
+    }
+
+    .slider-flex .slider-carousel {
+        max-height: 270px;
+        padding: 36px;
+    }
 
 .home-container{
     width: 80%;
@@ -559,7 +712,7 @@ methods: {
 /*---------------------*/
 
 
-/* responsive style */
+/* responsive styles */
 
 @media only screen and (max-width: 1400px){
   .home-container{
@@ -670,7 +823,7 @@ methods: {
   }
 
   .ninja-work span{
-    font-size: 6px;
+    font-size: 10px;
   }
 
   .steps-content{

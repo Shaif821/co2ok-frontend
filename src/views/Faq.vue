@@ -111,10 +111,18 @@
                             <a class="uk-accordion-title" href="#">How do shops benefit from being in CO₂ok Ninja
                                 program?</a>
                             <div class="uk-accordion-content">
-                                <ol>
-                                    <li>Our users are clients who have a strong incentive to buy from our partner shops and not their competition.</li>
-                                    <li>We are preparing multiple new features such as highlighting partners’ websites in search results. These features directly drive new consumers to partners’ stores.</li>
-                                    <li>Thanks to CO₂ok the brands of the shops are associated with a great cause. They show that climate and our environment matters to them as well and with this they boost their image.</li>
+                                <ol class="list__faq">
+                                    <li>Our users are clients who have a strong incentive to buy from our partner shops
+                                        and not their competition.
+                                    </li>
+                                    <li>We are preparing multiple new features such as highlighting partners’ websites
+                                        in search results. These features directly drive new consumers to partners’
+                                        stores.
+                                    </li>
+                                    <li>Thanks to CO₂ok the brands of the shops are associated with a great cause. They
+                                        show that climate and our environment matters to them as well and with this they
+                                        boost their image.
+                                    </li>
                                 </ol>
                             </div>
                         </li>
@@ -122,23 +130,37 @@
                             <a class="uk-accordion-title" href="#">How big is your piece of the cake?</a>
                             <div class="uk-accordion-content">
                                 <p>
-                                    We invest 75% of the commission in the CO₂ compensation. The remaining 25% are much needed to keep CO₂ok going. We just started and our margin doesn’t even cover the costs. Our goal is to make an impact and give everybody the chance to easily fight climate change. Eventually, we will reduce our margin – we are not in this to become rich. We will always be open and transparent and therefore we will report our income and spending each year.
+                                    We invest 75% of the commission in the CO₂ compensation. The remaining 25% are much
+                                    needed to keep CO₂ok going. We just started and our margin doesn’t even cover the
+                                    costs. Our goal is to make an impact and give everybody the chance to easily fight
+                                    climate change. Eventually, we will reduce our margin – we are not in this to become
+                                    rich. We will always be open and transparent and therefore we will report our income
+                                    and spending each year.
                                 </p>
                             </div>
                         </li>
                         <li>
-                            <a class="uk-accordion-title" href="#">I only shop at Amazon and already use Amazon Smile program, is there any reason for me to install the Ninja App?</a>
+                            <a class="uk-accordion-title" href="#">I only shop at Amazon and already use Amazon Smile
+                                program, is there any reason for me to install the Ninja App?</a>
                             <div class="uk-accordion-content">
                                 <p>
-                                    First of all, our partners usually donate 2-12 times more through the Ninja App (1-6%) than Amazon does through Amazon Smile (only 0.5% of the final price). So, if you care about having as big a positive impact on the world as you can, using the Ninja App either instead of or in addition to Amazon Smile is a way to achieve that. Moreover, there are a lot of products or services available in our partner stores that are not available on Amazon. For example, travel services (hotels, flights, train tickets, car rentals), financial products, or sport clubs’ official apparel.
+                                    First of all, our partners usually donate 2-12 times more through the Ninja App
+                                    (1-6%) than Amazon does through Amazon Smile (only 0.5% of the final price). So, if
+                                    you care about having as big a positive impact on the world as you can, using the
+                                    Ninja App either instead of or in addition to Amazon Smile is a way to achieve that.
+                                    Moreover, there are a lot of products or services available in our partner stores
+                                    that are not available on Amazon. For example, travel services (hotels, flights,
+                                    train tickets, car rentals), financial products, or sport clubs’ official apparel.
                                 </p>
                             </div>
                         </li>
                         <li>
-                            <a class="uk-accordion-title" href="#">How can I be sure that the money will be used to compensate greenhouse gasses?</a>
+                            <a class="uk-accordion-title" href="#">How can I be sure that the money will be used to
+                                compensate greenhouse gasses?</a>
                             <div class="uk-accordion-content">
                                 <p>
-                                    Atmosfair and Fair Climate Fund provide us with certificates to prove we compensated. Additionally, we will report our income and spending each year.
+                                    Atmosfair and Fair Climate Fund provide us with certificates to prove we
+                                    compensated. Additionally, we will report our income and spending each year.
                                 </p>
                             </div>
                         </li>
@@ -146,15 +168,26 @@
                             <a class="uk-accordion-title" href="#">Does it cost me anything to use the Ninja App?</a>
                             <div class="uk-accordion-content">
                                 <p>
-                                    No, the Ninja App is absolutely free to use. The prices in the online stores are exactly the same whether you use the app or not.
+                                    No, the Ninja App is absolutely free to use. The prices in the online stores are
+                                    exactly the same whether you use the app or not.
                                 </p>
                             </div>
                         </li>
                         <li>
-                            <a class="uk-accordion-title" href="#">I am not buying in any of these stores, is there any reason for me to install the Ninja App?</a>
+                            <a class="uk-accordion-title" href="#">I am not buying in any of these stores, is there any
+                                reason for me to install the Ninja App?</a>
                             <div class="uk-accordion-content">
                                 <p>
-                                    Yes, there are three reasons: 1) We are constantly working on new partnerships, so we may partner with stores that you do use in the near future. It’s easier to have it already installed rather than regularly check if stores that you use have been added. 2) If you even once decide to buy from our partners stores, having the Ninja App already installed can be a difference with the output of CO₂ in the world. It’s better to have it installed just in case, rather than miss an easy opportunity to do a lot of good for free. 3) It is easier to establish new partnerships with a bigger user base: the more users the Ninja App has, the easier it is to convince new stores to join our initiative. Therefore, by installing the Ninja App, you make it more probable that we will partner with shops you use in the future.
+                                    Yes, there are three reasons: 1) We are constantly working on new partnerships, so
+                                    we may partner with stores that you do use in the near future. It’s easier to have
+                                    it already installed rather than regularly check if stores that you use have been
+                                    added. 2) If you even once decide to buy from our partners stores, having the Ninja
+                                    App already installed can be a difference with the output of CO₂ in the world. It’s
+                                    better to have it installed just in case, rather than miss an easy opportunity to do
+                                    a lot of good for free. 3) It is easier to establish new partnerships with a bigger
+                                    user base: the more users the Ninja App has, the easier it is to convince new stores
+                                    to join our initiative. Therefore, by installing the Ninja App, you make it more
+                                    probable that we will partner with shops you use in the future.
                                 </p>
                             </div>
                         </li>
@@ -162,7 +195,13 @@
                             <a class="uk-accordion-title" href="#">How does it work?</a>
                             <div class="uk-accordion-content">
                                 <p>
-                                    After installing the Ninja app you will see a our “Shop CO₂ok” box whilst shopping in one of our partner stores. Simply click this box and you will be redirected back to the partner store (exactly where you were before). From then on, whenever you buy something, CO₂ok receives a portion of the price you pay (usually between 1% and 6%). We donate our profits to carefully selected organisations such as Atmosfair. Some stores will require you to repeat the process after some time. You are a mobile Ninja - see here.
+                                    After installing the Ninja app you will see a our “Shop CO₂ok” box whilst shopping
+                                    in one of our partner stores. Simply click this box and you will be redirected back
+                                    to the partner store (exactly where you were before). From then on, whenever you buy
+                                    something, CO₂ok receives a portion of the price you pay (usually between 1% and
+                                    6%). We donate our profits to carefully selected organisations such as Atmosfair.
+                                    Some stores will require you to repeat the process after some time. You are a mobile
+                                    Ninja - see here.
                                 </p>
                             </div>
                         </li>
@@ -170,7 +209,10 @@
                             <a class="uk-accordion-title" href="#">Credits to Altruisto</a>
                             <div class="uk-accordion-content">
                                 <p>
-                                    We would like to thank Altruisto for putting their code open source so we could fork our own project based on their previous work. Altruisto does a great job at donating to charities through online shoppings. Their GitHub repo can be found here: Altruisto GitHub repository
+                                    We would like to thank Altruisto for putting their code open source so we could fork
+                                    our own project based on their previous work. Altruisto does a great job at donating
+                                    to charities through online shoppings. Their GitHub repo can be found here:
+                                    Altruisto GitHub repository
                                 </p>
                             </div>
                         </li>
@@ -232,204 +274,24 @@
     import Vue from 'vue'
     import Vuikit from 'vuikit'
     import '@vuikit/theme'
-    import VkGrid from "vuikit/src/library/grid/components/grid";
 
     Vue.use(Vuikit)
     export default {
         name: "Faq",
-        components: {VkGrid}
     }
 </script>
 
-<style lang="scss" scoped>
-
-    /* ------- Variables ------- */
-
-    $main-color: #08BA4D;
-    $secondary-color: #10DC87;
-    $main-gradient: linear-gradient(to bottom, #10dc87 0%, #08ba4d 100%);
-    $text-color: #2F2F2F;
-
-    /* ------- Main things ------- */
-
-    h1, h2, h3, p, a, label, input, ::placeholder {
-        font-family: 'Poppins', sans-serif !important;
-        margin: 0;
-        padding: 0;
-    }
-
-    h1 {
-        color: #606468;
-        font-weight: 600;
-        margin: 0;
-        font-size: 40px;
-        line-height: 48px;
-        margin-bottom: 20px;
-    }
-
-    .subheading {
-        color: $main-color;
-        font-size: 18px;
-    }
-
-    p, a, input, ::placeholder {
-        font-size: 16px !important;
-    }
-
-    p, label, input {
-        color: $text-color;
-    }
-
-    p {
-        margin: 0;
-        padding: 0;
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    input {
-        display: block;
-        margin-top: 4px;
-        margin-bottom: 15px;
-        border-radius: 3px;
-        border: 1px solid #BCBCBC;
-        padding: 13px;
-        width: 100%;
-        box-sizing: border-box;
-
-        &:focus {
-            outline: none;
-            border: 1px solid $main-color;
-        }
-    }
-
-    ::placeholder {
-        color: #959595;
-    }
-
-    a {
-        &:hover {
-            text-decoration: none;
-        }
-    }
-
-    .link {
-        color: $main-color;
-        padding: 0 !important;
-        margin: 0 !important;
-
-        &:hover {
-            color: $main-color;
-            text-decoration: underline;
-        }
-    }
-
-    .button, .button-secondary {
-        padding: 10px 25px !important;
-        text-align: center;
-        border-radius: 5px;
-        transition: 0.1s;
-    }
-
-    .button {
-        padding: 12px 25px !important;
-        background: $main-gradient;
-        color: #fff !important;
-        font-weight: 400 !important;
-
-        &:hover {
-            opacity: 0.8;
-        }
-    }
-
-    .button-secondary {
-        border: 2px solid #9F9F9F;
-        color: #9F9F9F;
-        background-color: none;
-
-        &:hover {
-            background-color: #9F9F9F;
-            color: white;
-        }
-    }
-
-    .blockquote {
-        -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
-        -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
-        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
-
-        border-left: 6px solid $secondary-color;
-        padding: 25px;
-        background-color: #fff;
-        border-radius: 0px 3px 3px 0px;
-    }
-
-    @media screen and (max-width: 640px) {
-        h1 {
-            font-size: 30px;
-            line-height: 38px;
-            margin-bottom: 15px;
-        }
-
-        .subheading {
-            font-size: 16px;
-        }
-
-        p, a, input, ::placeholder {
-            font-size: 14px !important;
-        }
-
-        label {
-            font-size: 12px;
-        }
+<style lang="scss" >
+    .main /deep/ {
+        @import "~uikit/dist/css/uikit.min.css";
     }
 
 
-    /* ------- Main ------- */
+    @import '../styles/main.scss';
+    @import '../styles/faq.scss';
 
-    .main {
-        margin: 0 auto;
-        max-width: 1160px;
-        width: 100%;
-        text-align: left;
-        padding: 50px 0px 70px 0px;
-
-        ul {
-            li {
-                border-radius: 3px;
-                border: 1px solid #BCBCBC;
-
-                .uk-accordion-title {
-                    padding: 20px;
-                    font-size: 18px !important;
-                    font-weight: 600;
-                }
-
-                .uk-accordion-content {
-                    margin: 0px 20px 20px 20px;
-                    padding-top: 20px;
-                    border-top: 1px solid #BCBCBC;
-                }
-            }
-        }
-
-        .dutch {
-            margin-top: 50px;
-        }
-    }
-
-    @media screen and (max-width: 640px) {
-        .main {
-            ul {
-                li {
-                    .uk-accordion-title {
-                        font-size: 16px !important;
-                    }
-                }
-            }
-        }
+    .list__faq > *{
+        border: none !important;
     }
 
 </style>

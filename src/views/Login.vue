@@ -1,5 +1,5 @@
 <template>
-    <div class="register__container ma-0 pa-0" fluid align-center grid-list-md text-xs-center>
+    <v-container class="register__container ma-0 pa-0" fluid align-center grid-list-md text-xs-center>
         <v-layout class="register__layout  ma-0 pa-0" wrap row>
             <v-flex class="register__col-1" xs12 sm12 md6>
                 <v-layout class="register__col-filler" wrap>
@@ -28,7 +28,7 @@
                         <form v-model="valid" class="login__form">
                             <div class="login__header-group animated fadeInUp">
                                 <p class="login__form-header">Account</p>
-                                <p class="login__form-title">Login to access to more information</p>
+                                <h1 class="login__form-title">Login to access to more information</h1>
                             </div>
 
 
@@ -72,7 +72,7 @@
             </v-flex>
         </v-layout>
         <PasswordForgotModal/>
-    </div>
+    </v-container>
 </template>
 
 
@@ -123,13 +123,13 @@
                 let message = {title: 'Oops... Something went wrong!', text: 'Try again later.'}
                 if (this.email !== '' && this.password !== '') {
                     axios
-                        .post('http://127.0.0.1:8000/login/', {
+                        .post(`${this.$store.state.SITE_HOST}/login/`, {
                             body: {
                                 email: this.email,
                                 password: this.password,
                                 sort: 'webshop',
                             },
-                            header: {"X-CSRFToken": 'gZvnzSFeGp7h68WjCzmFky6wMkiJZXDU',}
+                            // header: {"X-CSRFToken": 'gZvnzSFeGp7h68WjCzmFky6wMkiJZXDU',}
 
                         })
                         .then(response => {
@@ -137,17 +137,16 @@
                                 if (response.data.authenticate) {
                                     this.$store.dispatch('commitSaveUser', response.data)
                                     this.$store.commit('setLocalUserData', response.data)
-                                    console.log('userlocal', response.data.token);
+                                    console.log('userlocal', response.data.authenticate);
 
                                     // this.$store.state.userStatus = true;
                                     // console.log(this.$store.state.userAuthLocalData);
                                     this.$store.commit('isLoggedIn', response.data.authenticate)
                                     this.$store.dispatch('commitGetUserData');
                                     //userSession return a boolean of de authenticate status of the user
-                                    if(this.$store.state.Authenticated)
-                                    {
+                                    if (window.localStorage.getItem('Authenticated')) {
                                         this.$router.push('dashboard')
-                                    }else{
+                                    } else {
                                         this.$router.push('login')
                                         // alert('not authenticated')
                                         // window.location.href = '/login'
@@ -162,7 +161,9 @@
                             }
                         })
                         .catch(error => {
-                            this.errorMessage(message)
+                            // this.errorMessage(message)
+                            console.log(error);
+
                         })
                     this.send = false
                 }
@@ -176,12 +177,12 @@
 <style scoped>
     .register__container {
         height: 100%;
-        width: 100% ;
+        width: 100%;
         background: white;
     }
 
     .register__layout {
-        height: 100% ;
+        height: 100%;
     }
 
     .register__col-1 {
@@ -361,8 +362,10 @@
             margin-left: 0;
             font-size: 15px;
             overflow: hidden;
-            max-width: 800px !important;
-            width: 100% !important;
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
         }
 
         .register__layout-form {
@@ -373,15 +376,20 @@
 
         .register__form-mb {
             margin: 0;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .login__form-title {
-            font-size: 17px;
+            font-size: 20px;
             line-height: 25px;
         }
 
         .login__back {
-            padding:5px 15px;
+            padding: 5px 15px;
         }
 
         .login__group {
@@ -393,14 +401,15 @@
         }
     }
 
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
         .login__form {
             padding: 40px 40px;
             width: 100%;
+            max-width: 500px;
         }
 
         .login__submit, .login__back {
-            padding: 5px 10px;
+            padding: 5px 20px;
             font-size: 15px;
         }
     }
