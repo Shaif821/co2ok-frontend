@@ -1,12 +1,12 @@
 <template>
-    <v-app id="app">
+    <div id="app">
         <div class="body">
-            <Nav :routeName="currentRouteName"/>
+            <Nav/>
             <router-view class="view animated fadeIn"></router-view>
         </div>
         <Footer/>
         <Modal v-if="$store.state.modalStatus"/>
-    </v-app>
+    </div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@
 </script>
 
 <style lang="scss">
-    @import 'styles/app.scss';
+    @import 'styles/main.scss';
 
     #app {
         font-family: 'Poppins', sans-serif;

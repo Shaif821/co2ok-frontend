@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard">
+    <v-app class="dashboard">
         <div class="dashboard__container">
             <div class="dashboard__header">
                 <h1 class="dashboard__title">Dashboard</h1>
@@ -90,7 +90,7 @@
             </v-card>
         </div>
 
-    </div>
+    </v-app>
 </template>
 
 <script>
@@ -140,7 +140,7 @@
                     this.view = 'Transactions'
                     this.active = 0
                 } else if (order === 1) {
-                    con
+                    // con
                     this.view = 'Plugin'
                     this.active = 1
                 } else if (order === 2) {

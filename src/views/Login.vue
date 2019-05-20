@@ -160,7 +160,7 @@
                                 } else {
                                     let errormessage = {
                                         title: 'Oops... Something went wrong!',
-                                        text: rsponse.data.error
+                                        text: response.data.error
                                     }
                                     this.errorMessage(errormessage)
                                 }
@@ -169,7 +169,6 @@
                         .catch(error => {
                             // this.errorMessage(message)
                             console.log(error);
-
                         })
                     this.send = false
                 }

@@ -7,7 +7,7 @@
 
         <div class="graph-container mb-1">
             <div class="graph-tabs">
-                <p class="graph-tab-name font-weight-bold" style="position: relative; top: 10px;"  @click="monthTransactions()">Monthly Transactions</p>
+                <p class="graph-tab-name font-weight-bold" style=""  @click="yearTransactions()">Monthly Transactions</p>
                 <p class="graph-tab-name font-weight-bold"  @click="weekTransactions()">Weekly Transactions</p>
             </div>
 
@@ -22,35 +22,33 @@
             <v-flex xs12 sm6 md6 lg6 style="height: 100%;" class="week-ctr-flex">
                 <div class="text-capitalize black--text ctrl-container" style="" v-if="week">
 
-                    <v-tooltip top color="#369555">
+                    <!-- <v-tooltip top color="#369555">
                         <template v-slot:activator="{ on }">
-                          <!-- <img src="../../assets/images/dashboard/prev-month.svg" alt="" v-on="on" class="prev-month"> -->
                           <div class="month-ctrl" @click="prevMonthCtrl()">
                               <v-icon medium :style="prevStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_left</v-icon>
                               <v-icon medium :style="prevStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_left</v-icon>
                           </div>
                         </template>
                         <span>{{prevMonth}}</span>
-                    </v-tooltip>
+                    </v-tooltip> -->
 
                     <v-icon class="graph-ctr-icon animated bounceIn" style="color: #E0E0E0;" small>keyboard_arrow_left</v-icon>
-                    <p class="graph-ctr-txt animated bounceIn" style="color: #E0E0E0;width: 150px;">Previous Week</p>
+                    <p class="graph-ctr-txt animated bounceIn" style="color: #E0E0E0;width: 150px;" @click="prevWeek()">Previous Week</p>
                 </div>
 
                 <div class="text-capitalize black--text ctrl-container" style="" v-if="week">
-                    <p class="graph-ctr-txt animated bounceIn">Next Week</p>
+                    <p class="graph-ctr-txt animated bounceIn"  @click="nextWeek()">Next Week</p>
                     <v-icon class="graph-ctr-icon animated bounceIn" small>keyboard_arrow_right</v-icon>
 
-                    <v-tooltip top color="#369555">
+                    <!-- <v-tooltip top color="#369555">
                         <template v-slot:activator="{ on }">
-                          <!-- <img src="../../assets/images/dashboard/next-month.svg" alt="" v-on="on" class="prev-month"> -->
                           <div class="month-ctrl" @click="nextMonthCtrl()">
                               <v-icon medium :style="nextStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_right</v-icon>
                               <v-icon medium :style="nextStyle" style="" class="animated zoomIn" v-on="on">keyboard_arrow_right</v-icon>
                           </div>
                         </template>
                         <span>{{nextMonth}}</span>
-                    </v-tooltip>
+                    </v-tooltip> -->
 
                 </div>
             </v-flex>
@@ -82,6 +80,7 @@
 
 <script>
 import LineChart from '@/components/dashboard/chart.vue'
+import Co2okWidget from '../../co2okWidget'
     export default {
         name: "Transactions",
 
@@ -93,7 +92,7 @@ import LineChart from '@/components/dashboard/chart.vue'
             return{
 
               Graph: null,
-            //   graphTabName: [{name: 'Monthly Transactions', fnt: this.monthTransactions()}, {name: 'Weekly Transactions', fnt: this.weekTransactions()}],
+            //   graphTabName: [{name: 'Monthly Transactions', fnt: this.yearTransactions()}, {name: 'Weekly Transactions', fnt: this.weekTransactions()}],
               datacollection: null,
               chartOptions: {
 
@@ -140,19 +139,36 @@ import LineChart from '@/components/dashboard/chart.vue'
               monthNumber: 0,
               realTimeMonth: this.$moment().format('MMMM'), //displayed month when next/pren are clicked
               monthsArr: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Dencember'],
+              daysArr: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
               nextStyle: {color: '#E0E0E0', cursor: 'default'}, // month next btn dunamic styles
-              prevStyle: {color: '#369555', cursor: 'pointer'} // month previous btn dunamic styles
+              prevStyle: {color: '#369555', cursor: 'pointer'}, // month previous btn dunamic styles
+              yearArr: ['',[],[],[],[],[],[],[],[],[],[],[],[]]
 
             }
         },
 
         created() {
 
-            this.fillData();
+            // this.fillData();
+            this.yearTransactions()
+
         },
 
         mounted() {
-
+            let data = [
+                '',
+               { January: [[8,21,7,1,0,3,5],[20,12,3,0,0,10,0],[11,1,5,3,0,11,2],[20,11,0,6,2,9,0]]},
+               { February: [[],[],[],[]]},
+               { March: [[],[],[],[]]},
+               { April: [[],[],[],[]]},
+               { May: [[8,21,7,1,0,3,5],[20,12,3,0,0,10,0],[11,1,5,3,0,11,2],[20,11,0,6,2,9,0]]}
+            ]
+            // console.log(data[1]);
+            // let id ='TWVyY2hhbnQ6N2U2NjU4M2UtYTRmMi00YWNmLThhYWItNzI1MTJiMGEzMmE1'
+            // Co2okWidget.merchantCompasations(id, this.$moment().year())
+            // console.log(Co2okWidget);
+            // this.TransactionsParams()
+            
         },
 
         methods: {
@@ -171,6 +187,7 @@ import LineChart from '@/components/dashboard/chart.vue'
                         }
                     ]
                 }
+                
             },
 
             graphUpdatedData() {
@@ -189,13 +206,59 @@ import LineChart from '@/components/dashboard/chart.vue'
 
             },
 
-            monthTransactions() {
+            parseTransactionsData(transactions){
+
+                let currentMonth = this.$moment().format('M')
+                let transDataArr = []
+                let i
+                let parseMonth
+                for(i = 1; i <= currentMonth; i++){
+                    
+                    if(i < 10){
+                        parseMonth = `${'0'+i}`
+                    }else if(i > 9){
+                        parseMonth = i
+                    }
+                    
+                    transactions.filter((transaction) => {
+                        if(transaction.month.search(parseMonth) != -1){
+                            this.yearArr[i].push(transaction.orders)
+                        }
+                    })
+
+                    let uniqYearArr = this._.uniq(this.yearArr[i])
+                    transDataArr.push(this._.floor(this._.sum(uniqYearArr), 2))
+
+                }
+                // console.log(this._.uniq(uniqYearArr))
+                return this._.uniq(transDataArr)
+
+            },
+
+            yearTransactions() {
               
-              let chart = document.getElementById('line-chart')
-              this.week = false
-              this.graphLegend = `${this.currentMonth} Transaction(s)`
-              this.$store.commit('monthGraphData')
-              this.graphUpdatedData()
+            //   let chart = document.getElementById('line-chart')
+                this.week = false //disable the week ctrl btn(next, prev)
+                this.graphLegend = `${this.currentMonth} Transaction(s)` 
+                let self = this
+                this.$axios.get(`${this.$store.state.SITE_HOST}/user/compnensationsData/`, {
+                    params: {
+                        year: self.$moment().year(),
+                        merchantId: self.$store.state.userData.userProfileData.merchantId
+                    },
+                    headers: {
+                       "X-CSRFToken": `${this.$store.state.userToken}`,
+                        Authorization: `token ${window.localStorage.getItem('userToken')}` 
+                    }
+                }).then(response => {
+
+                    let yearGraphData = self.parseTransactionsData(response.data)
+                    self.$store.commit('yearGraphData', yearGraphData)
+                    self.graphUpdatedData()
+
+                }).catch(error => {
+                    console.log(error)
+                })
 
             },
 
@@ -208,6 +271,18 @@ import LineChart from '@/components/dashboard/chart.vue'
               //next/previous month tooltip content
               this.prevMonth = this.$moment().subtract(1, 'months').format('MMMM')
               this.nextMonth = this.currentMonth
+
+              let id ='TWVyY2hhbnQ6N2U2NjU4M2UtYTRmMi00YWNmLThhYWItNzI1MTJiMGEzMmE1'
+            //   Co2okWidget.merchantCompasations(id, this.$moment().year())
+
+            },
+            
+
+            prevWeek(){
+
+            },
+
+            nextWeek(){
 
             },
 
@@ -260,9 +335,9 @@ import LineChart from '@/components/dashboard/chart.vue'
                   this.prevStyle.color = '#E0E0E0'
                   this.prevStyle.cursor = 'default'
                   this.prevMonth = 'January'
-                   this.realTimeMonth = 'January'
-                   this.graphLegend = `${this.realTimeMonth} week-1 Transaction(s)`
-                   this.nextMonth = 'February'             
+                  this.realTimeMonth = 'January'
+                  this.graphLegend = `${this.realTimeMonth} week-1 Transaction(s)`
+                  this.nextMonth = 'February'             
               }
               
 
