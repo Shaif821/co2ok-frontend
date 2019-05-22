@@ -1,5 +1,5 @@
 /* ------- Main things ------- */
-@import 'variables';
+@import 'variables.scss';
 
 /*----------Config--------*/
 h1, h2, h3, p, a, label, input, ::placeholder {
@@ -67,6 +67,16 @@ input {
   padding: 50px 0;
 }
 
+.uk-container-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.uk-container-row{
+  display: flex;
+  flex-direction: row;
+}
+
 .main-title--large {
   color:#606468;
   font-size: 42px;
@@ -131,6 +141,7 @@ a {
   padding: 12px 25px!important;
   background: $main-gradient;
   color: #fff;
+  border: 1px solid $main-gradient;
   font-weight: 400!important;
   &:hover {
     opacity: 0.8;

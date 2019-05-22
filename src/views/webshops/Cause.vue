@@ -176,7 +176,7 @@
                             More revenue and help fight climate change?
                         </p>
                         <br>
-                        <button type="button" class="button">Install Plug-in</button>
+                        <router-link to="/webshops/plug-in-installation" class="button">Install Plug-in</router-link>
                     </div>
                 </div>
             </div>
@@ -245,6 +245,6 @@
     }
 
     @import '../../styles/main';
-    @import '../../styles/cause';
+    @import '../../styles/webshops/cause';
 
 </style>

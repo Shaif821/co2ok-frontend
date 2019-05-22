@@ -13,6 +13,7 @@ const ifAuthenticated = (to, from, next) => {
 // next()
 }
 
+
 const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
@@ -36,7 +37,7 @@ const router = new Router({
             path: '/dashboard',
             name: 'dashboard',
             component: () => import( './views/Dashboard'),
-            // beforeEnter: ifAuthenticated
+            beforeEnter: ifAuthenticated
         },
         {
             path: '/about',
@@ -79,13 +80,23 @@ const router = new Router({
             name: 'cause-marketing',
             component: () => import('./views/webshops/Cause')
         },
+        {
+            path: '/webshops/plug-in-installation',
+            name: 'plug-in-installation',
+            component: () => import('./views/webshops/Installation')
+        },
+        {
+            path: '/projects',
+            name: 'projects',
+            component: () => import('./views/Projects')
+        },
         { //404 page, redirects back to home (= /)
             path: '*', redirect: '/'
 
         }
     ],
 
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior () {
         return { x: 0, y: 0 };
     }
 });
