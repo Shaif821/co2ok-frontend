@@ -9,14 +9,11 @@
 
 //-------------------Section 2-----------------
 .section-2--col-1 {
-  .main-title, .sub-title {
-    padding: 0;
-    margin: 0;
-  }
+  margin-bottom: 30px;
 }
 
 .section-2--shop-btn {
-  background: #08BA4D;
+  background: rgba(9,210,87, 0.8);
   border-radius: 5px;
 }
 
@@ -25,18 +22,21 @@
   height: 110px;
   width: 100%;
   margin: 0 15px 20px 0;
+  cursor: pointer;
 }
 
-//.shop--image-wrapper {
-//  height: 100%;
-//  width: 100%;
-//
-//  &:hover {
-//    background: red;
-//    //background: rgba(0, 0, 0, 0.5);
-//    //background: rgba(9,210,87, 0.8)
-//  }
-//}
+.shop--image-wrapper {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0.4;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transition: 0.3s ease-in-out;
+    background: rgba(9,210,87, 1.5);
+  }
+}
 
 .shops--image {
   background-size:     cover;                      /* <------ */
@@ -77,6 +77,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.section-1 {
+  padding-bottom: 0;
+}
+
+.section-2 {
+  padding: 0;
 }
 
 

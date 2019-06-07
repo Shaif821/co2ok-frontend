@@ -1,20 +1,21 @@
 var fs = require('fs');
 
+
 // import all language files
-var nl_home = require('./nl_/nl_home.js');
-var en_home = require('./en_/en_home.js');
+var nl_home = require('./nl_/nl_nav.js');
+var en_home = require('./en_/en_nav.js');
 
 console.log('execute compile.js');
 
 // name of home language kit
 // add more language kit files later
-var home_language_kit = "src/lang/lang_home.json";
+var home_language_kit = "src/lang/lang_nav.json";
 
 // exmaple homepage language object
 // add more language objects later
 var home_language_kit_object = {
-    lang_nl_home: nl_home.lang_nl_home,
-    lang_en_home: en_home.lang_en_home
+    lang_nl_nav: nl_home.lang_nl_nav,
+    lang_en_nav: en_home.lang_en_nav
 };
 
 // create New Home Language Kit

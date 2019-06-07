@@ -3,15 +3,15 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const ifAuthenticated = (to, from, next) => {
-    if (localStorage.getItem('Authenticated')) {
-        return next('/dashboard')
-    } else {
-        this.$router.push('login')
-        // return
-    }
-// next()
-}
+// const ifAuthenticated = (to, from, next) => {
+//     if (localStorage.getItem('Authenticated')) {
+//         return next('/dashboard')
+//     } else {
+//         this.$router.push('login')
+//         // return
+//     }
+// // next()
+// }
 
 
 const router = new Router({
@@ -19,25 +19,14 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/',
+            path: '/home',
             name: 'home',
             component: () => import('./views/Home'),
         },
         {
-            path: '/register/:merchantId',
-            name: 'register',
-            component: () => import( './views/Register.vue')
-        },
-        {
-            path: '/login',
-            name: 'login',
-            component: () => import( './views/Login.vue')
-        },
-        {
-            path: '/dashboard',
-            name: 'dashboard',
-            component: () => import( './views/Dashboard'),
-            beforeEnter: ifAuthenticated
+            path: '/',
+            name: 'home2',
+            component: () => import('./views/Ahome'),
         },
         {
             path: '/about',
@@ -50,7 +39,7 @@ const router = new Router({
             component: () => import( './views/Faq'),
         },
         {
-            path: '/about/how-it-works',
+            path: '/compensation',
             name: 'steps',
             component: () => import( './views/Steps'),
         },
@@ -61,8 +50,8 @@ const router = new Router({
 
         },
         {
-            path: '/blog',
-            name: 'blog',
+            path: '/news',
+            name: 'news',
             component: () => import('./views/Blog')
         },
         {
@@ -86,18 +75,49 @@ const router = new Router({
             component: () => import('./views/webshops/Installation')
         },
         {
+            path: '/webshops/register/:merchantId',
+            name: 'webshops-register',
+            component: () => import( './views/dashboard/Register.vue')
+        },
+        {
+            path: '/webshops/login',
+            name: 'webshops-login',
+            component: () => import( './views/dashboard/Login.vue')
+        },
+        {
+            path: '/webshops/dashboard',
+            name: 'dashboard',
+            component: () => import( './views/dashboard/Dashboard'),
+            // beforeEnter: ifAuthenticated
+        },
+        {
             path: '/projects',
             name: 'projects',
             component: () => import('./views/Projects')
         },
         {
-            path: '/profile',
-            name: 'profile',
-            component: () => import('./views/NinjaProfile')
+            path: '/consumers/profile',
+            name: 'consumers-profile',
+            component: () => import('./views/consumer/Consumer'),
+            // beforeEnter: ifAuthenticated
+        },
+        {
+            path: '/consumers/login',
+            name: 'consumers-login',
+            component: () => import('./views/consumer/LoginConsumer')
+        },
+        {
+            path: '/:id(\\d+)',
+            name: 'consumers-invitation',
+            component: () => import('./views/consumer/Invitation')
+        },
+        {
+            path: '/welcome',
+            name: 'welcome',
+            component: () => import('./views/consumer/Welcome')
         },
         { //404 page, redirects back to home (= /)
             path: '*', redirect: '/'
-
         }
     ],
 
